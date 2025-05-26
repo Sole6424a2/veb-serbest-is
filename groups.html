@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qruplar - TələbəLife</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .group-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .group-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .group-card h3 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .group-card p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .join-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">TələbəLife</a>
+            <div class="nav-links">
+                <a href="index.html">Ana Səhifə</a>
+                <a href="groups.html" class="active">Qruplar</a>
+                <a href="notes.html">Notlar</a>
+                <a href="events.html">Tədbirlər</a>
+                <a href="discounts.html">Endirimlər</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Qruplar</h1>
+        <input type="text" class="search-box" placeholder="Qrup axtarın..." id="groupSearch">
+        
+        <div class="group-grid">
+            <div class="group-card">
+                <h3>AzTU 6424a1</h3>
+                <p>İnformasiya Təhlükəsizliyi</p>
+                <p>I Kurs</p>
+                <a href="#" class="join-button">Qoşul</a>
+            </div>
+            <div class="group-card">
+                <h3>AzTU 6424a2</h3>
+                <p>İnformasiya Təhlükəsizliyi</p>
+                <p>I Kurs</p>
+                <a href="#" class="join-button">Qoşul</a>
+            </div>
+            <div class="group-card">
+                <h3>AzTU 6423a1</h3>
+                <p>Komputer Texnologiyaları</p>
+                <p>II Kurs</p>
+                <a href="#" class="join-button">Qoşul</a>
+            </div>
+            <div class="group-card">
+                <h3>AzTU 6423a2</h3>
+                <p>Komputer Texnologiyaları</p>
+                <p>II Kurs</p>
+                <a href="#" class="join-button">Qoşul</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TələbəLife. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Qrup axtarışı
+        const searchBox = document.getElementById('groupSearch');
+        const groupCards = document.querySelectorAll('.group-card');
+
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            groupCards.forEach(card => {
+                const groupName = card.querySelector('h3').textContent.toLowerCase();
+                const groupDesc = card.querySelector('p').textContent.toLowerCase();
+                
+                if (groupName.includes(searchTerm) || groupDesc.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
